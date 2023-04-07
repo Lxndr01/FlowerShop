@@ -147,7 +147,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4);
             Name = "MainForm";
-            Text = "Virábolt kezelő";
+            Text = "Virágbolt kezelő";
             Load += MainForm_Load;
             ResumeLayout(false);
         }
