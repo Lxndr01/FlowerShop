@@ -29,36 +29,29 @@
         private void InitializeComponent()
         {
             label7 = new Label();
-            label6 = new Label();
             label5 = new Label();
-            txbMennyiseg = new TextBox();
-            txbSzin = new TextBox();
+            txbEmail = new TextBox();
             btnSave = new Button();
             label2 = new Label();
             label3 = new Label();
-            txbEgysegar = new TextBox();
+            txbIranyitoszam = new TextBox();
             txbName = new TextBox();
+            txbTelepules = new TextBox();
+            txbCim = new TextBox();
+            label1 = new Label();
+            label4 = new Label();
+            label6 = new Label();
             SuspendLayout();
             // 
             // label7
             // 
             label7.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label7.AutoSize = true;
-            label7.Location = new Point(316, 234);
+            label7.Location = new Point(319, 191);
             label7.Name = "label7";
-            label7.Size = new Size(57, 15);
+            label7.Size = new Size(79, 15);
             label7.TabIndex = 29;
-            label7.Text = "Egységár:";
-            // 
-            // label6
-            // 
-            label6.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            label6.AutoSize = true;
-            label6.Location = new Point(316, 191);
-            label6.Name = "label6";
-            label6.Size = new Size(68, 15);
-            label6.TabIndex = 28;
-            label6.Text = "Mennyiség:";
+            label7.Text = "Vevő lakcíme:";
             // 
             // label5
             // 
@@ -66,36 +59,29 @@
             label5.AutoSize = true;
             label5.Location = new Point(316, 147);
             label5.Name = "label5";
-            label5.Size = new Size(31, 15);
+            label5.Size = new Size(96, 15);
             label5.TabIndex = 27;
-            label5.Text = "Szín:";
+            label5.Text = "Vevő email címe:";
             // 
-            // txbMennyiseg
+            // txbEmail
             // 
-            txbMennyiseg.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            txbMennyiseg.Location = new Point(316, 206);
-            txbMennyiseg.Name = "txbMennyiseg";
-            txbMennyiseg.Size = new Size(160, 23);
-            txbMennyiseg.TabIndex = 25;
-            // 
-            // txbSzin
-            // 
-            txbSzin.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            txbSzin.Location = new Point(316, 165);
-            txbSzin.Name = "txbSzin";
-            txbSzin.Size = new Size(160, 23);
-            txbSzin.TabIndex = 24;
+            txbEmail.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txbEmail.Location = new Point(316, 165);
+            txbEmail.Name = "txbEmail";
+            txbEmail.Size = new Size(160, 23);
+            txbEmail.TabIndex = 24;
             // 
             // btnSave
             // 
             btnSave.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             btnSave.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnSave.Location = new Point(353, 281);
+            btnSave.Location = new Point(358, 368);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(75, 23);
             btnSave.TabIndex = 23;
             btnSave.Text = "Mentés";
             btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // label2
             // 
@@ -119,13 +105,13 @@
             label3.Text = "Vevő hozzáadása";
             label3.TextAlign = ContentAlignment.TopCenter;
             // 
-            // txbEgysegar
+            // txbIranyitoszam
             // 
-            txbEgysegar.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            txbEgysegar.Location = new Point(316, 252);
-            txbEgysegar.Name = "txbEgysegar";
-            txbEgysegar.Size = new Size(160, 23);
-            txbEgysegar.TabIndex = 20;
+            txbIranyitoszam.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txbIranyitoszam.Location = new Point(316, 231);
+            txbIranyitoszam.Name = "txbIranyitoszam";
+            txbIranyitoszam.Size = new Size(160, 23);
+            txbIranyitoszam.TabIndex = 20;
             // 
             // txbName
             // 
@@ -135,20 +121,69 @@
             txbName.Size = new Size(160, 23);
             txbName.TabIndex = 19;
             // 
+            // txbTelepules
+            // 
+            txbTelepules.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txbTelepules.Location = new Point(316, 279);
+            txbTelepules.Name = "txbTelepules";
+            txbTelepules.Size = new Size(160, 23);
+            txbTelepules.TabIndex = 30;
+            // 
+            // txbCim
+            // 
+            txbCim.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txbCim.Location = new Point(316, 327);
+            txbCim.Name = "txbCim";
+            txbCim.Size = new Size(160, 23);
+            txbCim.TabIndex = 31;
+            // 
+            // label1
+            // 
+            label1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label1.AutoSize = true;
+            label1.Location = new Point(316, 213);
+            label1.Name = "label1";
+            label1.Size = new Size(77, 15);
+            label1.TabIndex = 32;
+            label1.Text = "Irányítószám:";
+            // 
+            // label4
+            // 
+            label4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label4.AutoSize = true;
+            label4.Location = new Point(316, 261);
+            label4.Name = "label4";
+            label4.Size = new Size(58, 15);
+            label4.TabIndex = 33;
+            label4.Text = "Település:";
+            // 
+            // label6
+            // 
+            label6.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label6.AutoSize = true;
+            label6.Location = new Point(316, 309);
+            label6.Name = "label6";
+            label6.Size = new Size(32, 15);
+            label6.TabIndex = 34;
+            label6.Text = "Cím:";
+            // 
             // AddVevo
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(label7);
             Controls.Add(label6);
+            Controls.Add(label4);
+            Controls.Add(label1);
+            Controls.Add(txbCim);
+            Controls.Add(txbTelepules);
+            Controls.Add(label7);
             Controls.Add(label5);
-            Controls.Add(txbMennyiseg);
-            Controls.Add(txbSzin);
+            Controls.Add(txbEmail);
             Controls.Add(btnSave);
             Controls.Add(label2);
             Controls.Add(label3);
-            Controls.Add(txbEgysegar);
+            Controls.Add(txbIranyitoszam);
             Controls.Add(txbName);
             Name = "AddVevo";
             Text = "AddVevo";
@@ -159,14 +194,17 @@
         #endregion
 
         private Label label7;
-        private Label label6;
         private Label label5;
-        private TextBox txbMennyiseg;
-        private TextBox txbSzin;
+        private TextBox txbEmail;
         private Button btnSave;
         private Label label2;
         private Label label3;
-        private TextBox txbEgysegar;
+        private TextBox txbIranyitoszam;
         private TextBox txbName;
+        private TextBox txbTelepules;
+        private TextBox txbCim;
+        private Label label1;
+        private Label label4;
+        private Label label6;
     }
 }

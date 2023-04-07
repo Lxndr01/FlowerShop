@@ -29,33 +29,39 @@ namespace ViragShopGUI
         {
             using (var httpClient = new HttpClient())
             {
-                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                // create an object to serialize as JSON
-                var requestData = new ViragKategoria
+                try
                 {
-                    nev = txbName.Text,
-                    megjegyzes = txbDecsription.Text,
-                
-                };
+                    httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                // serialize the object as JSON
-                var requestDataJson = JsonConvert.SerializeObject(requestData);
+                    // create an object to serialize as JSON
+                    var requestData = new ViragKategoria
+                    {
+                        nev = txbName.Text,
+                        megjegyzes = txbDecsription.Text,
 
-                // create a StringContent object with the JSON data
-                var content = new StringContent(requestDataJson, Encoding.UTF8, "application/json");
+                    };
+
+                    // serialize the object as JSON
+                    var requestDataJson = JsonConvert.SerializeObject(requestData);
+
+                    // create a StringContent object with the JSON data
+                    var content = new StringContent(requestDataJson, Encoding.UTF8, "application/json");
 
 
-                var response = await httpClient.PostAsync("https://localhost:7294/api/ViragKategoria", content);
-                if (response.IsSuccessStatusCode)
+                    var response = await httpClient.PostAsync("https://localhost:7294/api/ViragKategoria", content);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var responseContent = await response.Content.ReadAsStringAsync();
+                        var apiResponse = JsonConvert.DeserializeObject<APIResponse>(responseContent);
+                        MessageBox.Show(apiResponse.Message, "Infó", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Valami hiba adótott mentés közben.\n Nézd újra át az adataid!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                } catch (Exception ex)
                 {
-                    var responseContent = await response.Content.ReadAsStringAsync();
-                    var apiResponse = JsonConvert.DeserializeObject<APIResponse>(responseContent);
-                    MessageBox.Show(apiResponse.Message, "Infó", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    // Handle the error response
+                    MessageBox.Show("Valami hiba adótott mentés közben.\n", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

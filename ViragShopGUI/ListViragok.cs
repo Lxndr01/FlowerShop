@@ -23,19 +23,26 @@ namespace ViragShopGUI
         {
             using (var httpClient = new HttpClient())
             {
-                var response = await httpClient.GetAsync("https://localhost:7294/api/View/vviragok");
-                if (response.IsSuccessStatusCode)
+                try
                 {
-                    var responseContent = await response.Content.ReadAsStringAsync();
-                    var apiResponse = JsonConvert.DeserializeObject<APIResponse>(responseContent);
-                    List<v_viragok> vviragok = JsonConvert.DeserializeObject<List<v_viragok>>("" + apiResponse.Data);
-                    vviragDGrid.DataSource = vviragok;
-                    vviragDGrid.AutoGenerateColumns = true;
-                }
-                else
+                    var response = await httpClient.GetAsync("https://localhost:7294/api/View/vviragok");
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var responseContent = await response.Content.ReadAsStringAsync();
+                        var apiResponse = JsonConvert.DeserializeObject<APIResponse>(responseContent);
+                        List<v_viragok> vviragok = JsonConvert.DeserializeObject<List<v_viragok>>("" + apiResponse.Data);
+                        vviragDGrid.DataSource = vviragok;
+                        vviragDGrid.AutoGenerateColumns = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Valami hiba adótott mentés közben.\n", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }catch (Exception ex)
                 {
-                    // Handle the error response
+                    MessageBox.Show("Valami hiba adótott mentés közben.\n", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                
             }
         }
     }
